@@ -46,9 +46,11 @@ timeUnits = list(map(lambda x: x + ' ms', timeUnits))
 headings = ["Region", "City Name", "Languaje", "Time"]
 df =pd.DataFrame(list(zip(variable, cityName, languageName, timeUnits)),columns=headings)
 df.reset_index(drop=False)
-
+df2 = pd.DataFrame(time)
 
 print(df)
+datos=[df2.sum(),df2.mean(),df2.min(),df2.max()]
+print(datos)
 #print(timeUnits)
 #
         # print(count)
