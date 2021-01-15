@@ -1,7 +1,7 @@
 import requests
 import hashlib
 import pandas as pd
-import time
+import timeit
 import sqlite3
 import matplotlib as plt
 import requests
@@ -21,11 +21,12 @@ pais = requests.get(url2).json()
 
 cityName = [[] for _ in range(7)]
 languageName = [[] for _ in range(7)]
-time = [1,2,3,4,5,6,7]
+time = [[] for _ in range(7)]
 
 #print(variable)
 
 for i in range(len(variable)):
+    t0=timeit.timeit()
     for k in range(len(pais)):
 
         count = randint(0, len(pais)-1)
@@ -34,11 +35,22 @@ for i in range(len(variable)):
             languageName[i]=hashlib.sha1(pais[count].get('languages')[0].get('name').encode('utf-8')).hexdigest()
         else:
             continue
+    t1=timeit.timeit()
+    time[i] = abs(round((t1-t0)*1000,3)) 
+
+timeUnits = list(map(str, time))
+timeUnits = list(map(lambda x: x + ' ms', timeUnits))
+        
+
 
 headings = ["Region", "City Name", "Languaje", "Time"]
-df =pd.DataFrame(list(zip(variable, cityName, languageName, time)),columns=headings)
+df =pd.DataFrame(list(zip(variable, cityName, languageName, timeUnits)),columns=headings)
 df.reset_index(drop=False)
-#print(df)
+
+
+print(df)
+#print(timeUnits)
+#
         # print(count)
 # print(cityName)
 
