@@ -1,18 +1,25 @@
-.table {
-    border-spacing: 0;
-    margin: 1rem;
-    background-color: #f5f5f5;
+body            { font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+a, h1       { color: #377ba8; }
+h1       { margin: 0; }
+h1              { border-bottom: 2px solid #eee; }
+
+
+table.dataframe, .dataframe th, .dataframe td {
+  border: none;
+  border-bottom: 1px solid #C8C8C8;
+  border-collapse: collapse;
+  text-align:left;
+  padding: 10px;
+  margin-bottom: 40px;
+  font-size: 0.9em;
 }
 
-.table__row:nth-child(even){
-    background-color: #e5e5e5;
-
+.tablaC th {
+    background-color: #add8e6;
+    color: white;
 }
 
-.table__header{
-    text-align: left;
-}
+tr:nth-child(odd)		{ background-color:#eee; }
+tr:nth-child(even)	{ background-color:#fff; }
 
-.table__cell{
-    padding: 8px;
-}
+tr:hover            { background-color: #ffff99;}

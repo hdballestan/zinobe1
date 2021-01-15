@@ -5,6 +5,7 @@ import time
 import sqlite3
 import matplotlib as plt
 import requests
+from random import seed, randint
 
 url = "https://restcountries-v1.p.rapidapi.com/all"
 url2 = "https://restcountries.eu/rest/v2/all" 
@@ -15,8 +16,35 @@ headers = {
 
 response = requests.request("GET", url, headers=headers)
 variable=sorted(set(map(lambda x:x.get('region'),response.json())))
-pais = request.get('url2').json()
+pais = requests.get(url2).json()
+#print(pais[0])
+
+cityName = [[] for _ in range(7)]
+languageName = [[] for _ in range(7)]
+time = [1,2,3,4,5,6,7]
+
 #print(variable)
+
+for i in range(len(variable)):
+    for k in range(len(pais)):
+
+        count = randint(0, len(pais)-1)
+        if pais[count].get('region') == variable[i]:
+            cityName[i] = pais[count].get('name')
+            languageName[i]=pais[count].get('languages')[0].get('name')
+        else:
+            continue
+
+headings = ["Region", "City Name", "Languaje", "Time"]
+df =pd.DataFrame(list(zip(variable, cityName, languageName, time)),columns=headings)
+df.reset_index(drop=False)
+#print(df)
+        # print(count)
+# print(cityName)
+
+#Vector auxiliar con países por región al azar
+
+
 # variable_df = pd.DataFrame.from_dict(variable)
 # variable_df.plot(kind='line')
 #print(response.text)
