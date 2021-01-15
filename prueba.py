@@ -31,7 +31,7 @@ for i in range(len(variable)):
         count = randint(0, len(pais)-1)
         if pais[count].get('region') == variable[i]:
             cityName[i] = pais[count].get('name')
-            languageName[i]=pais[count].get('languages')[0].get('name')
+            languageName[i]=hashlib.sha1(pais[count].get('languages')[0].get('name').encode('utf-8')).hexdigest()
         else:
             continue
 
