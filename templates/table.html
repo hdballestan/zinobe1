@@ -6,11 +6,24 @@
 </head>
 <body>
     <div class=table>
-        <h1>Countries data</h1>
+        <h1>Country data</h1>
         {% for table in tables %}
           <h2>{{titles[loop.index]}}</h2>
           {{ table|safe }}
         {% endfor %}
+      </div>
+      <div>
+        <table class="table">
+          <h1>Tiempos en ms</h1>
+          <tr class="table__header">
+            {% for header in headings %}
+            <th class="table__cell"> {{ header }} </th>
+            {% endfor %}
+          </tr>
+          {% for row in data %}
+            <th class="table_row"> {{ row }}</th>
+          {% endfor %}  
+        </table>
       </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 import requests
 import hashlib
 import pandas as pd
+import numpy as np
 import timeit
 import sqlite3
 import matplotlib as plt
@@ -48,9 +49,27 @@ df =pd.DataFrame(list(zip(variable, cityName, languageName, timeUnits)),columns=
 df.reset_index(drop=False)
 df2 = pd.DataFrame(time)
 
-print(df)
-datos=[df2.sum(),df2.mean(),df2.min(),df2.max()]
-print(datos)
+#print(df)
+tiempoTotal = round(float(df2.sum().array[0]),2)
+media = round(float(df2.mean().array[0]),2)
+minimo = round(float(df2.min().array[0]),2)
+maximo = round(float(df2.max().array[0]),2)
+
+# Solo se ejecuta una vez para crear la base de datos.
+
+# conn = sqlite3.connect('test.db')
+# df.to_sql('Nombre2', conn, index = False)
+# conn.close()
+
+#df.to_json(r'/home/ballesta/Documentos/proy/prueba1/data.json')
+
+
+
+
+
+
+#datos=[tiempoTotal,media,minimo,maximo]
+#print(datos)
 #print(timeUnits)
 #
         # print(count)
