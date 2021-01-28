@@ -55,7 +55,7 @@ media = round(float(df2.mean().array[0]),2)
 minimo = round(float(df2.min().array[0]),2)
 maximo = round(float(df2.max().array[0]),2)
 
-# Solo se ejecuta una vez para crear la base de datos.
+# Solo se ejecuta una vez para crear la base de datos o el json.
 
 # conn = sqlite3.connect('test.db')
 # df.to_sql('Nombre2', conn, index = False)
